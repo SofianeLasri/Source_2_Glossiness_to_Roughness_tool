@@ -29,10 +29,10 @@ jobs:
           pyinstaller main.spec
 
       - name: Upload Release Asset
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: my-executable
-          path: dist/your_script.exe
+          name: source2_glossiness_to_roughness_converter
+          path: dist/source2_glossiness_to_roughness_converter.exe
 
   release:
     needs: build
