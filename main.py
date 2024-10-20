@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinterdnd2 import DND_FILES, TkinterDnD
@@ -48,13 +49,25 @@ def convert():
     if input_path and output_path:
         convert_glossiness_to_roughness(input_path, output_path)
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 # Set up the GUI
+iconPath = resource_path('icon.ico')
+
 root = TkinterDnD.Tk()
 root.title("Source 2 Glossiness to Roughness Converter")
 root.geometry("400x400")
 root.resizable(False, False)
 
-root.iconbitmap('icon.ico')
+root.iconbitmap(iconPath)
 
 frame = tk.Frame(root)
 frame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
