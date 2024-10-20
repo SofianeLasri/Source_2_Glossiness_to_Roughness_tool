@@ -35,8 +35,8 @@ def update_image(file_path):
 
     # Set output path
     base, ext = os.path.splitext(file_path)
-    base = base.replace("_gloss", "").replace("_glossiness", "")
-    output_path = base + "_roughness" + ext
+    base = base.replace("_glossiness", "").replace("_gloss", "")
+    output_path = base + "_rough" + ext
     output_path_var.set(output_path)
 
 def on_drop(event):
