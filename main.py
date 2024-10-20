@@ -14,9 +14,9 @@ def convert_glossiness_to_roughness(input_path, output_path):
 
         # Save the image
         roughness_image.save(output_path)
-        messagebox.showinfo("Succès", f"Conversion réussie : {output_path}")
+        messagebox.showinfo("Succès", f"Conversion done : {output_path}")
     except Exception as e:
-        messagebox.showerror("Erreur", f"Erreur lors de la conversion : {e}")
+        messagebox.showerror("Erreur", f"Error while converting : {e}")
 
 def open_file():
     file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
@@ -50,15 +50,17 @@ def convert():
 
 # Set up the GUI
 root = TkinterDnD.Tk()
-root.title("Convertisseur Glossiness vers Roughness")
+root.title("Source 2 Glossiness to Roughness Converter")
 root.geometry("400x400")
 root.resizable(False, False)
+
+root.iconbitmap('icon.ico')
 
 frame = tk.Frame(root)
 frame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
 # Image display
-image_label = tk.Label(frame, text="Glisser une image ici", width=256, height=256, relief="solid")
+image_label = tk.Label(frame, text="Drop an image here", width=256, height=256, relief="solid")
 image_label.pack(pady=5)
 image_label.drop_target_register(DND_FILES)
 image_label.dnd_bind('<<Drop>>', on_drop)
@@ -75,11 +77,11 @@ def choose_output_directory():
         base_name = os.path.basename(output_path_var.get())
         output_path_var.set(os.path.join(directory, base_name))
 
-choose_dir_button = tk.Button(frame, text="Choisir le dossier", command=choose_output_directory)
+choose_dir_button = tk.Button(frame, text="Choose folder", command=choose_output_directory)
 choose_dir_button.pack(pady=5)
 
 # Convert button
-convert_button = tk.Button(frame, text="Convertir", command=convert)
+convert_button = tk.Button(frame, text="Convert", command=convert)
 convert_button.pack(pady=5)
 
 root.mainloop()
