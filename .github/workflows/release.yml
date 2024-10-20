@@ -30,7 +30,7 @@ jobs:
 
       - name: Debug
         run: |
-          ls -la
+          ls -la dist
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -40,3 +40,4 @@ jobs:
         with:
           files: |
             dist/source2_glossiness_to_roughness_converter.exe
+            icon.ico
