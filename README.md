@@ -1,7 +1,3 @@
-Certainly! Here's a README file in English that explains the purpose of your program and provides instructions on how to compile it on Windows:
-
----
-
 # Glossiness to Roughness Converter
 
 ![Glossiness to Roughness Converter](arts/screenshot.jpg)
